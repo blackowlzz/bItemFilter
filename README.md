@@ -1,6 +1,18 @@
-# bItemFilter
+bItemFilter is a **per-player item pickup filter** for Spigot and Paper servers. Each player manages their own independent filter — what one player blocks doesn't affect anyone else.
 
-A per-player item pickup filter for Spigot and Paper servers. Each player gets their own independent filter — what one player blocks doesn't affect anyone else.
+---
+
+# Download on Modrinth!
+
+[![Modrinth](https://img.shields.io/badge/Download-Modrinth-green)](https://modrinth.com/plugin/bitemfilter)
+
+---
+
+## Discord / Support
+
+Join the community for support and updates.
+
+[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat&logo=discord)](https://discord.gg/ZxBc4NvAnt)
 
 ---
 
@@ -18,16 +30,18 @@ Players can switch modes, toggle the filter on/off without losing their list, an
 
 ## GUI
 
-Open it with `/ifilter`. Everything is clickable:
+Open with `/ifilter`. Everything is clickable:
 
-- **Rows 1-4**: items currently in your filter. Click any to remove it.
-- **Your inventory** (bottom half of the GUI): click any item you're carrying to add or remove it from the filter — no need to type commands.
-- **Slot 47** — Mode button: switch between Blacklist and Whitelist.
-- **Slot 49** — Toggle button: enable or disable the filter without clearing it.
-- **Slot 51** — Clear button: shift-click to wipe the list.
-- **Arrows** (slots 45, 53): page navigation when you have more than 36 entries.
+| Slot | What it does |
+|------|-------------|
+| Rows 1-4 | Items currently in your filter. Click any to remove it. |
+| Your inventory | Click any item you're holding to add or remove it from the filter — no commands needed. |
+| Slot 47 | **Mode** button — switch between Blacklist and Whitelist. |
+| Slot 49 | **Toggle** button — enable or disable the filter without clearing it. |
+| Slot 51 | **Clear** button — shift-click to wipe the list. |
+| Slots 45, 53 | **Arrows** — page navigation for more than 36 entries. |
 
-On **1.20.5+** the GUI title and button names use Unicode small caps rendering.
+On **1.20.5+** the GUI title and button names render in Unicode small caps.
 
 ---
 
@@ -35,8 +49,8 @@ On **1.20.5+** the GUI title and button names use Unicode small caps rendering.
 
 All aliases work the same: `/bitemfilter`, `/itemfilter`, `/ifilter`, `/filter`.
 
-| Command | Description |
-|---|---|
+| Command | What it does |
+|---------|-------------|
 | `/ifilter` | Open the GUI |
 | `/ifilter toggle` | Enable or disable your filter |
 | `/ifilter mode` | Switch blacklist / whitelist |
@@ -50,8 +64,8 @@ All aliases work the same: `/bitemfilter`, `/itemfilter`, `/ifilter`, `/filter`.
 
 Require `bitemfilter.admin`.
 
-| Command | Description |
-|---|---|
+| Command | What it does |
+|---------|-------------|
 | `/ifilter admin clear <player>` | Clear another player's filter |
 | `/ifilter admin list <player>` | View another player's filter |
 | `/ifilter admin toggle <player>` | Toggle another player's filter |
@@ -62,7 +76,7 @@ Require `bitemfilter.admin`.
 ## Permissions
 
 | Permission | Default | Description |
-|---|---|---|
+|------------|---------|-------------|
 | `bitemfilter.use` | everyone | Use the filter and personal commands |
 | `bitemfilter.admin` | op | Admin commands and update notifications |
 
@@ -70,7 +84,7 @@ Require `bitemfilter.admin`.
 
 ## Storage
 
-Player data is stored in **SQLite** (`plugins/bItemFilter/filters.db`) with WAL mode. No YAML filter files to corrupt, no full rewrites on every save — each player's data is saved atomically only when it changes.
+Player data is stored in **SQLite** (`plugins/bItemFilter/filters.db`) with WAL mode. No YAML files to corrupt, no full rewrites on every save — each player's data is saved atomically only when it changes.
 
 ---
 
@@ -82,13 +96,12 @@ Everything in `config.yml` is configurable: all messages support `&` color codes
 
 ## Compatibility
 
-- Minecraft **1.8+** (uses `PlayerPickupItemEvent` on pre-1.12, `EntityPickupItemEvent` on 1.12+, detected automatically at startup)
+- Minecraft **1.8+** — uses `PlayerPickupItemEvent` on pre-1.12, `EntityPickupItemEvent` on 1.12+, detected automatically at startup
 - Spigot and Paper
 - Does not conflict with other pickup or economy plugins — cancels at `NORMAL` priority and respects already-cancelled events
 
 ---
 
-## Links
+## License
 
-- [Modrinth](https://modrinth.com/plugin/bitemfilter)
-- [Discord](https://discord.gg/ZxBc4NvAnt)
+bItemFilter is free and open source under the **GNU General Public License v3.0**.
