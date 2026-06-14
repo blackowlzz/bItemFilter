@@ -1,0 +1,18 @@
+name: bItemFilter
+version: '1.0.0'
+main: it.blackowlzz.bItemFilter.BItemFilter
+api-version: '1.13'
+authors: [ blackowlzz ]
+
+commands:
+  ifilter:
+    description: Manage your item pickup filter
+    aliases: [ bitemfilter, itemfilter, filter ]
+
+permissions:
+  bitemfilter.use:
+    description: Use the item filter
+    default: true
+  bitemfilter.admin:
+    description: Admin commands (clear/list/toggle other players, reload)
+    default: op

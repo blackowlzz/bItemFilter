@@ -1,0 +1,5 @@
+plugins { id("bitemfilter.java-conventions") }
+
+dependencies {
+    compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
+}

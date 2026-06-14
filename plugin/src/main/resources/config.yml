@@ -1,0 +1,143 @@
+# bItemFilter - Per-player item pickup filter
+# by blackowlzz
+#
+# Color codes: use & prefix (&a green, &c red, &b aqua, &7 gray, &l bold)
+# Placeholders in messages: %prefix% = plugin name tag (small caps on 1.20.5+)
+
+config-version: 2
+
+
+# General settings
+general:
+  # Default filter mode for new players: BLACKLIST or WHITELIST
+  # BLACKLIST: listed items will NOT be picked up
+  # WHITELIST: ONLY listed items will be picked up
+  default-mode: BLACKLIST
+  # Whether the filter is active by default for new players
+  default-enabled: true
+  # Maximum items a player can add to their filter (0 = unlimited)
+  max-items: 0
+
+
+# Messages
+# %prefix% is replaced with the plugin name tag (version-aware styling)
+messages:
+  filter-enabled: "%prefix% &7Item filtering &aenabled&7."
+  filter-disabled: "%prefix% &7Item filtering &cdisabled&7."
+  mode-blacklist: "%prefix% &7Mode set to &cBlacklist &7(listed items blocked)."
+  mode-whitelist: "%prefix% &7Mode set to &aWhitelist &7(only listed items picked up)."
+  item-added: "%prefix% &7Added &b%material% &7to your filter."
+  item-removed: "%prefix% &7Removed &b%material% &7from your filter."
+  item-already-in-filter: "%prefix% &b%material% &7is already in your filter."
+  item-not-in-filter: "%prefix% &b%material% &7is not in your filter."
+  filter-cleared: "%prefix% &7Your filter has been cleared."
+  filter-list-header: "%prefix% &7Your filtered items &8(%count%)&7:"
+  filter-list-entry: "  &b+ &7%material%"
+  filter-list-empty: "%prefix% &7Your filter is empty."
+  no-permission: "%prefix% &7You don't have permission."
+  player-not-found: "%prefix% &7Player not found."
+  player-only: "%prefix% &7This command is player-only."
+  item-in-hand: "%prefix% &7Hold an item or specify a material name."
+  invalid-material: "%prefix% &7Unknown material: &b%material%"
+  max-items-reached: "%prefix% &7Maximum filter size reached &8(%max% items)&7."
+  clear-confirm: "%prefix% &cShift-click the barrier to confirm clear."
+  usage-remove: "%prefix% &7Usage: &b/ifilter remove <material>"
+  usage-admin: "%prefix% &7Usage: &b/ifilter admin <clear|list|toggle> <player>"
+
+
+# Help command messages
+# Shown by /ifilter help
+# %prefix% and %version% are replaced automatically
+help:
+  player:
+    - ""
+    - "%prefix% &7v%version%"
+    - ""
+    - "  &b/ifilter &8| &b/ifilter open  &7- Open the filter GUI"
+    - "  &b/ifilter toggle         &7- Enable or disable your filter"
+    - "  &b/ifilter mode           &7- Switch between blacklist and whitelist"
+    - "  &b/ifilter add [material] &7- Add held item or a named material"
+    - "  &b/ifilter remove <mat>   &7- Remove an item from your filter"
+    - "  &b/ifilter list           &7- List all items in your filter"
+    - "  &b/ifilter clear          &7- Clear your entire filter"
+    - "  &b/ifilter help           &7- Show this page"
+    - ""
+  admin:
+    - "  &7Admin &8(bitemfilter.admin)&7:"
+    - "  &b/ifilter admin clear <player>  &7- Clear a player's filter"
+    - "  &b/ifilter admin list <player>   &7- View a player's filter"
+    - "  &b/ifilter admin toggle <player> &7- Toggle a player's filter"
+    - "  &b/ifilter reload                &7- Reload config and data"
+    - ""
+
+
+# GUI settings
+gui:
+  # Inventory title. On 1.20.5+ it is automatically rendered in small caps (bold removed).
+  title: "&b&lItem Filter"
+
+  filler-material: "GRAY_STAINED_GLASS_PANE"
+  separator-material: "BLACK_STAINED_GLASS_PANE"
+
+  # Previous / next page arrows
+  prev-name: "&7Previous Page"
+  prev-material: "ARROW"
+  next-name: "&7Next Page"
+  next-material: "ARROW"
+
+  # Mode toggle button (slot 47)
+  mode-blacklist-name: "&c&lBlacklist Mode"
+  mode-blacklist-material: "RED_STAINED_GLASS_PANE"
+  mode-blacklist-lore:
+    - "&7Listed items will &cnot &7be picked up."
+    - ""
+    - "&8Click to switch to &aWhitelist&8."
+
+  mode-whitelist-name: "&a&lWhitelist Mode"
+  mode-whitelist-material: "LIME_STAINED_GLASS_PANE"
+  mode-whitelist-lore:
+    - "&7Only listed items will be picked up."
+    - ""
+    - "&8Click to switch to &cBlacklist&8."
+
+  # Filter on/off toggle (slot 49)
+  toggle-filter-name-on: "&a&lFiltering: ON"
+  toggle-filter-material-on: "LIME_WOOL"
+  toggle-filter-lore-on:
+    - "&7Your filter is currently &aactive&7."
+    - ""
+    - "&8Click to &cdisable&8."
+
+  toggle-filter-name-off: "&c&lFiltering: OFF"
+  toggle-filter-material-off: "RED_WOOL"
+  toggle-filter-lore-off:
+    - "&7Your filter is currently &cinactive&7."
+    - ""
+    - "&8Click to &aenable&8."
+
+  # Clear button (slot 51) - shift-click to confirm
+  clear-name: "&c&lClear All"
+  clear-material: "BARRIER"
+  clear-lore:
+    - "&7Remove all items from your filter."
+    - ""
+    - "&cShift-click to confirm."
+
+  # Lore shown on each filtered item in the GUI
+  filtered-item-lore:
+    - "&8Click to remove from filter."
+
+  # Shown at slot 0 when filter is empty
+  empty-title: "&7Filter is empty"
+  empty-lore:
+    - "&7No items in your filter yet."
+    - ""
+    - "&7Click any item in your inventory"
+    - "&7to add it to the filter."
+
+
+# Update checker
+update-check:
+  enabled: true
+  # i see you trying to disable this, but you can't stop the future muahahahah (jk, you can, but please don't it's just a simple check for new versions so i can fix thingssss, no personal data is collected or sent)
+  frequency-minutes: 360
